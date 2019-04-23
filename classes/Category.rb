@@ -13,13 +13,14 @@ class Category
         new_note_contents = gets.chomp
         new_note = Note.new(new_note_id, new_note_contents)
         @notes.push(new_note)
+        return @notes.length - 1
     end
 
     def note_menu(note_id)
         note_index = @notes.find_index { |note| note.id == note_id }
 
         if note_index.nil?
-            puts "That was not a valid index! Please try again."
+            puts "That was not a valid ID! Please try again."
             return
         end
 
