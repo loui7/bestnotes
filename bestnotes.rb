@@ -38,7 +38,7 @@ loop do
         puts "These are your current notes: "
         selected_category.notes.each {|note| puts "#{note.id}. #{note.contents}" }
 
-        puts "You can input (n) to add a new note or (m) to return to the previous menu."
+        puts "Please input the number next to the note you would like to select. You can also input (n) to add a new note or (m) to return to the previous menu."
 
         notes_menu_entry = gets.strip
 
