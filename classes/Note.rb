@@ -11,4 +11,3 @@ class Note
         @contents = new_contents.to_s
     end
 end
-
