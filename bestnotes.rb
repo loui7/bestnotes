@@ -42,7 +42,9 @@ loop do
 
         notes_menu_entry = gets.strip
 
-        if(notes_menu_entry == "n")
+        if(notes_menu_entry.to_i != 0)
+            selected_category.note_menu(notes_menu_entry.to_i)
+        elsif(notes_menu_entry == "n")
             selected_category.add_note
         elsif(notes_menu_entry == "m")
             categories[category_index_if_exists] = selected_category
