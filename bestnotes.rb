@@ -1,3 +1,4 @@
+
 require_relative "./classes/Category"
 require_relative "./classes/Note"
 
@@ -6,10 +7,14 @@ categories = []
 puts "Hello, Welcome to BestNotes"
 
 loop do
-
+    finished = false
+    if (finished)
+        break
+    end
     
     if(categories.length > 0)
         puts "These are your current categories:"
+        p categories
         categories.each {|category| puts category.name}
     end
 
@@ -26,19 +31,20 @@ loop do
         categories.push(Category.new(new_category_id, category_name))
         selected_category = categories[categories.length - 1]
         category_index_if_exists = categories.length - 1
-    end    
+    end
+    
 
     puts "You have selected category #{selected_category.name}"
 
     until selected_category == nil
         if(selected_category.notes.length == 0)
-            selected_category.add_note            
+            puts "You do not currently have any notes in this category. Press (n) to add a new note or (m) to return to the previous menu."
+        else
+            puts "These are your current notes: "
+            selected_category.notes.each {|note| puts "#{note.id}. #{note.contents}" }
+            puts "Please input the number next to the note you would like to select. You can also input (n) to add a new note or (m) to return to the previous menu."
         end
 
-        puts "These are your current notes: "
-        selected_category.notes.each {|note| puts "#{note.id}. #{note.contents}" }
-
-        puts "Please input the number next to the note you would like to select. You can also input (n) to add a new note or (m) to return to the previous menu."
 
         notes_menu_entry = gets.strip
 
@@ -55,4 +61,5 @@ loop do
 
     end
 end
+
 
