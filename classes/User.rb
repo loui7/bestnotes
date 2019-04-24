@@ -1,17 +1,35 @@
 class User
-    attr_reader :id, :username, :categories
-    def initialize(id, username)
+    attr_reader :id, :username, :categories, :password
+    def initialize(id, username, password = nil)
         @id = id
         @username = username
         @categories = []
+        @password = password
     end
 
-    def add_category()
+    def add_category
         puts "Please enter a name for your new category: "
         new_category_id = @categories.length + 1
         new_category_name = gets.strip
         new_category = Category.new(new_category_id, new_category_name)
         @categories.push(new_category)
+    end
+
+    def auth
+        until @password.nil?
+            puts "Please enter the password for #{@username}"
+            entered_password = gets.chomp
+            if entered_password == password
+                return self
+            end
+
+            # returns to top of auth loop unless user enters 'r'
+            puts "That was not the correct password. Press (r) to try again or (m) to return to the main login screen."
+            incorrect_password_prompt_response = gets.strip
+            if incorrect_password_prompt_response == "m"
+                return nil
+            end
+        end
     end
 
     def category_menu(category_id)
