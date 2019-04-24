@@ -2,7 +2,16 @@ require_relative "./classes/Category"
 require_relative "./classes/Note"
 require_relative "./classes/User"
 
-users = []
+require "yaml"
+
+storage = "./storage.yml"
+
+if File.exist?(storage)
+    users = YAML.safe_load(File.read(storage), [User, Category, Note, Time])
+else
+    users = []
+    File.open(storage, "w+") { |file| file.write(users.to_yaml) }
+end
 
 puts "Hello, Welcome to BestNotes"
 
@@ -14,28 +23,54 @@ loop do
         if users.empty?
             puts "No accounts found!"
         else
-            puts "Press (l) to login or (r) to register."
+            puts "Press (l) to login, (r) to register or (q) to quit."
             auth_menu_entry = gets.strip.downcase
         end
 
-        # If there are no users OR the user specifically wants to add an account
+        # If there are no users OR the user specifically wants to add an account. Creates new user account.
         if users.empty? || auth_menu_entry == "r"
             puts "Please enter a username: "
             new_username = gets.strip
+
             new_user_id = users.length + 1
-            new_user = User.new(new_user_id, new_username)
+
+            puts "Do you want to set a password? (y/n) or (m) to return to the main login screen."
+            password_wanted = gets.strip.downcase
+
+            new_user = nil
+
+            while new_user.nil?
+                if password_wanted == "y"
+                    puts "Enter password: "
+                    new_password = gets.chomp
+                    new_user = User.new(new_user_id, new_username, new_password)
+                    puts "Please confirm your password."
+                elsif password_wanted == "n"
+                    new_user = User.new(new_user_id, new_username)
+
+                end
+
+            end
+
             users.push(new_user)
             user_index = users.length - 1
-            selected_user = users[user_index]
+            # TODO: make user confirm password? Find way to avoid it being possible to access object without password.
+            selected_user = users[user_index].auth
         elsif auth_menu_entry == "l"
-            puts "Please enter your username: "
+            puts "Username: "
             entered_username = gets.strip
             user_index = users.find_index { |user| user.username == entered_username }
             if user_index.nil?
                 puts "That username was not found! please try again"
             else
-                selected_user = users[user_index]
+                puts "Password: "
+                selected_user = users[user_index].auth
             end
+        elsif auth_menu_entry == "q"
+            File.open(storage, "r+") do |f|
+                f.write(users.to_yaml)
+            end
+            return
         else
             puts "#{auth_menu_entry} is an invalid option, please try again."
         end
@@ -66,5 +101,4 @@ loop do
         end
 
     end
-
 end
