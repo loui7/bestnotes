@@ -16,21 +16,20 @@ class User
     end
 
     def auth
-        if @password.nil?
-            return self
-        end
+        return self if @password.nil?
 
         loop do
-            puts "Please enter the password for #{@username}"
             entered_password = gets.chomp
-            if entered_password == password
-                return self
-            end
 
-            # returns to top of auth loop unless user enters 'r'
+            return self if entered_password == password
+
+            # returns to top of auth loop unless user enters 'm'
             puts "That was not the correct password. Press (r) to try again or (m) to return to the main login screen."
             incorrect_password_prompt_response = gets.strip
-            if incorrect_password_prompt_response == "m"
+            case incorrect_password_prompt_response
+            when "r"
+                puts "Password: "
+            when "m"
                 return nil
             end
         end

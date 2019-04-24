@@ -7,10 +7,10 @@ require "yaml"
 storage = "./storage.yml"
 
 if File.exist?(storage)
-    users = YAML.safe_load(File.read(storage))
+    users = YAML.safe_load(File.read(storage), [User, Category, Note, Time])
 else
-    File.new(storage, "w+")
     users = []
+    File.open(storage, "w+") { |file| file.write(users.to_yaml) }
 end
 
 puts "Hello, Welcome to BestNotes"
@@ -44,6 +44,7 @@ loop do
                     puts "Enter password: "
                     new_password = gets.chomp
                     new_user = User.new(new_user_id, new_username, new_password)
+                    puts "Please confirm your password."
                 elsif password_wanted == "n"
                     new_user = User.new(new_user_id, new_username)
 
@@ -54,14 +55,15 @@ loop do
             users.push(new_user)
             user_index = users.length - 1
             # TODO: make user confirm password? Find way to avoid it being possible to access object without password.
-            selected_user = users[user_index]
+            selected_user = users[user_index].auth
         elsif auth_menu_entry == "l"
-            puts "Please enter your username: "
+            puts "Username: "
             entered_username = gets.strip
             user_index = users.find_index { |user| user.username == entered_username }
             if user_index.nil?
                 puts "That username was not found! please try again"
             else
+                puts "Password: "
                 selected_user = users[user_index].auth
             end
         elsif auth_menu_entry == "q"

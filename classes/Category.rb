@@ -28,10 +28,10 @@ class Category
         puts "You have selected the following note: "
         puts selected_note.contents
         until selected_note.nil?
-            puts "Press (e) to edit, (d) to delete or (m) to return to previous menu."
+            puts "Press (u) to update, (d) to delete or (m) to return to previous menu."
             selected_note_menu_entry = gets.strip.downcase
-            if selected_note_menu_entry == "e"
-                puts "How would you like to edit your note?"
+            if selected_note_menu_entry == "u"
+                puts "Please enter updated note: "
                 updated_note_contents = gets.chomp
                 selected_note.update_note(updated_note_contents)
                 puts "You have successfully edited your note."
