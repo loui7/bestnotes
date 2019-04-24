@@ -47,14 +47,16 @@ Making sure to content is clearly written and easy to read, providing headers fo
 ## Potential legal, moral, ethical, cultural and safety issues:
 Legal Issue:- If we want schools to use our Bestnotes app, then we must make sure that we abide by the law. According to a certain study, 15% of the world’s population experience some form of disabilities. Although not all of these people have disabilities that make it difficult for them to access Bestnotes, it’s still a significant portion of the population. For institutions such as schools and universities, it would violate the law.
 
-### Moral Issue:- Within our future enhancements, we stated that we want multiple users to be able to share notes as well as edit/delete one another’s notes and/or categories. This future enhancement can be a moral issue because sharing notes with multiple users may cause cyber-bullying. 
+### Moral Issue:
+- Within our future enhancements, we stated that we want multiple users to be able to share notes as well as edit/delete one another’s notes and/or categories. This future enhancement can be a moral issue because sharing notes with multiple users may cause cyber-bullying. 
 
 
 
 
-Cultural issue:- A cultural issue as well as an accessibility concern is the language barrier. It’s highly likely that there will be users of our app that don’t speak English and it’s our responsibility at Bestnotes to determine where language/cultural differences can be accomodated. To eradicate this cultural issue, we have created a future enhancement that will accommodate a diversity of users worldwide.
+### Cultural issue:
+- A cultural issue as well as an accessibility concern is the language barrier. It’s highly likely that there will be users of our app that don’t speak English and it’s our responsibility at Bestnotes to determine where language/cultural differences can be accomodated. To eradicate this cultural issue, we have created a future enhancement that will accommodate a diversity of users worldwide.
 
-Safety issues:- Although Bestnotes is a harmless note-taking app, there are safety issues regarding this app. The safety issues are:
+### Safety issues:- Although Bestnotes is a harmless note-taking app, there are safety issues regarding this app. The safety issues are:
 Criminal organisations/entities using our note-taking app to plan their agendas. 
 Our app getting hacked may also be a safety issue as it would expose the data our uses collected to those who may harm them.
 A few solutions on how we could deal with these safety issues are:
@@ -109,11 +111,15 @@ Evidence of app idea brainstorming sessions:-
 On Wednesday the 17th of April, 2019, we were assigned into groups of two in order to create an app using Ruby and VS Code. Louis and I were grouped together. On this day, we started planning on what app we would like to create. We had a number of options such as: Restaurant, Swimming Pool and Note-taking app.
 
 On Wednesday the 17th of April, we then chose the idea of a note-taking app an we started drawing diagrams of what how we should code it and/or implement it.
+![brainstorming](docs/Secondbrainstorming.jpg)
+![brainstorming](docs/Thirdbrainstorming.jpg)
+
 
 
 					
 Project Plan/ Timeline
 After choosing the app idea, we came up with a project plan/timeline of what we hand-wrote what we would like to achieve every day we worked on this assessment. 
+![brainstorming](docs/Brainstorming.jpg)
 
 Description of overall app design (classes, files, basic flow)
 
