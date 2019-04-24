@@ -16,7 +16,11 @@ class User
     end
 
     def auth
-        until @password.nil?
+        if @password.nil?
+            return self
+        end
+
+        loop do
             puts "Please enter the password for #{@username}"
             entered_password = gets.chomp
             if entered_password == password

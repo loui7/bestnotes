@@ -2,7 +2,16 @@ require_relative "./classes/Category"
 require_relative "./classes/Note"
 require_relative "./classes/User"
 
-users = []
+require "yaml"
+
+storage = "./storage.yml"
+
+if File.exist?(storage)
+    users = YAML.safe_load(File.read(storage))
+else
+    File.new(storage, "w+")
+    users = []
+end
 
 puts "Hello, Welcome to BestNotes"
 
@@ -14,7 +23,7 @@ loop do
         if users.empty?
             puts "No accounts found!"
         else
-            puts "Press (l) to login or (r) to register."
+            puts "Press (l) to login, (r) to register or (q) to quit."
             auth_menu_entry = gets.strip.downcase
         end
 
@@ -44,7 +53,7 @@ loop do
 
             users.push(new_user)
             user_index = users.length - 1
-            # TODO make user confirm password? Find way to avoid it being possible to access object without password.
+            # TODO: make user confirm password? Find way to avoid it being possible to access object without password.
             selected_user = users[user_index]
         elsif auth_menu_entry == "l"
             puts "Please enter your username: "
@@ -55,6 +64,11 @@ loop do
             else
                 selected_user = users[user_index].auth
             end
+        elsif auth_menu_entry == "q"
+            File.open(storage, "r+") do |f|
+                f.write(users.to_yaml)
+            end
+            return
         else
             puts "#{auth_menu_entry} is an invalid option, please try again."
         end
