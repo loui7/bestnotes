@@ -193,7 +193,7 @@ While some of the functionality within the classes was similar, we did not use a
 ![Trello](docs/us10.png)
 
 ## Testing
-You can view the testing that we completed here: https://docs.google.com/spreadsheets/d/1KACaan5Cqytn9ZxWsEE50vxSzuYmBnrtFdNi9j2Uaok/edit?usp=sharing
+You can view the testing that we completed [here](https://docs.google.com/spreadsheets/d/1KACaan5Cqytn9ZxWsEE50vxSzuYmBnrtFdNi9j2Uaok/edit?usp=sharing). 
 
 ###End of README file
 
