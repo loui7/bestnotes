@@ -50,6 +50,8 @@ def bestnotes_ui(users)
                 if user_index.nil?
                     puts "\e[H\e[2J"
                     puts "Sorry, that username does not exist in our database. Please try again."
+                    puts "Press any key to continue"
+                    STDIN.getch
                 else
                     print "Password: "
                     selected_user = users[user_index].auth
@@ -69,16 +71,20 @@ end
 
 # Adds new user to array
 def add_user(new_user_id, users)
-    puts "Please enter a username: "
+    print "Please enter a username: "
     new_username = gets.strip
 
     user_index = users.find_index { |user| user.username == new_username }
 
     if new_username.strip.empty?
         puts "You cannot create a user with an empty username, please try again."
+        puts "Press any key to continue"
+        STDIN.getch
         return nil
     elsif !user_index.nil?
         puts "There is already an account with that name, please try again."
+        puts "Press any key to continue"
+        STDIN.getch
         return nil
     end
 

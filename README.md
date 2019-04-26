@@ -12,10 +12,35 @@ We created the Bestnotes app for a variety of reasons:
 When you’re reading and/or listening, note-taking helps you to concentrate and thus makes your learning more effective.
 Notes are an important part of a students life. It’s useful for students who have upcoming assessments and examinations.
 
+- Register for accounts with or without a password
+- Once you are logged in, you can create and delete categories
+- Once you have selected a category, you can add, update and delete notes. You can also generate a pdf containing all of the notes in that category.
+
 ### Instructions for Use:
 ruby bestnotes.rb
 
 ### Screenshots:
+
+# Login Screen
+![login](docs/login.png)
+# Categories
+![categories](docs/categories.png)
+# Categories Options
+![categories help](docs/catquestion.png)
+# When there are no notes in a category
+![no notes dialogue](docs/nonotes.png)
+# Notes
+![notes dialogue](docs/notes.png)
+# Notes Options
+![notes help](docs/notesquestion.png)
+# When a note is selected
+![notes selected](docs/noteselected.png)
+# When a user inputs '?' with a category selected
+![pdf export dialogue](docs/pdfexport.png)
+# Results of PDF export
+![saved pdf](docs/savedpdf.png)
+
+
 
 ## Future Enhancements:
 There are a number of future enhancements we would like to make to the app, but due to the complexity of the enhancements as well as the lack of time to implement these enhancements, unfortunately we could not complete them. These future enhancements are:
@@ -93,18 +118,6 @@ It is our responsibility at Bestnotes to deal with the racial and gender by our 
 
 
 
-		 	 	 		
-			
-				
-					
-		 	 	 		
-
-
-
-
-
-
-
 
 Details of Designing and Planning Process
 Evidence of app idea brainstorming sessions:-			
@@ -120,9 +133,32 @@ Project Plan/ Timeline
 After choosing the app idea, we came up with a project plan/timeline of what we hand-wrote what we would like to achieve every day we worked on this assessment. 
 ![brainstorming](docs/Brainstorming.jpg)
 
-Description of overall app design (classes, files, basic flow)
+### Description of overall app design (classes, files, basic flow)
 
+Original UML Diagram:
+![original uml](docs/originalUML.png)
+With each Category being stored in an array in the main code.
 
+Original flowchart
+![original flowchart](docs/origFlow.png)
+
+Updated UML
+![updated uml](docs/updateUML.png)
+
+We had to update the structure of my classes as we began writing them in code because it became clearer that there was a better way to structure methods in order to enable better readability, and improve debugging and future expansions.
+
+The above flowchart is mostly accurate to how the MVP ended up operating. However we have now also added a login, where a user must be logged in before the flowchart starting at the category menu is initiated. Each user is stored in an array loaded/saved at the beginning and end of each session from a YAML file.
+
+### Design considerations and choices
+The app was designed to minimize technical debt and ensure maximum accessibility by any future open source contributors. With this in mind, we decided to split the program into a number of classes, where notes are contained within a category, and categories are contained within users.
+
+A particular instance of User is selected, and all operations on the contained categories are carried out within the scope of that instance. This helps to prevent changes being made to the wrong users categories. The same goes for notes within categories. By having all of the code for editing notes executed within the scope of the particular category, we avoid bugs where notes are added to the wrong category.
+
+Sectioning the code into classes like this also generally makes it more modular, which should make it easier to accept changes from open source contributors as we can be more certain about whether it will introduce bugs or not, or if they do occur more easily determine from where. 
+
+Additionally, we tried to make methods throughout our application as small as possible to make them more easily tested.
+
+While some of the functionality within the classes was similar, we did not use a superclass/subclass structure for a couple of reasons. Firstly, they were not actually different types of the same thing. So, structuring our code in this way could make it difficult to read. Also, because they are not different types of the same thing, while the underlying data structures contained within the two are very similar, the dialogues and data  contained within them are different so by separating them into different classes it is easier to read and understand, and therefore easier to expand on and for other developers to contribute to.
 
 
 ## Screenshots of Trello Board
@@ -155,6 +191,9 @@ Description of overall app design (classes, files, basic flow)
 
 ### Added storage 10
 ![Trello](docs/us10.png)
+
+## Testing
+You can view the testing that we completed here: https://docs.google.com/spreadsheets/d/1KACaan5Cqytn9ZxWsEE50vxSzuYmBnrtFdNi9j2Uaok/edit?usp=sharing
 
 ###End of README file
 
