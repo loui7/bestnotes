@@ -115,13 +115,47 @@ On Wednesday the 17th of April, we then chose the idea of a note-taking app an w
 ![brainstorming](docs/Thirdbrainstorming.jpg)
 
 
-
 					
 Project Plan/ Timeline
 After choosing the app idea, we came up with a project plan/timeline of what we hand-wrote what we would like to achieve every day we worked on this assessment. 
 ![brainstorming](docs/Brainstorming.jpg)
 
 Description of overall app design (classes, files, basic flow)
+
+
+
+
+## Screenshots of Trello Board
+### Initial Plan before writing code 1
+![Trello](docs/us1.png)
+
+### Added ability to create categories 2
+![Trello](docs/us2.png)
+
+### Added note class 3
+![Trello](docs/us3.png)
+
+### Added ability to add and view notes within categories 4
+![Trello](docs/us4.png)
+
+### Added ability to select and edit notes, as well as return to higher menus 5
+![Trello](docs/us5.png)
+
+### Added ability to delete notes 6
+![Trello](docs/us6.png)
+
+### Added basic user functionality 7
+![Trello](docs/us7.png)
+
+### Added user login/registration functionality 8
+![Trello](docs/us8.png)
+
+### Added user authentication with passwords 9
+![Trello](docs/us9.png)
+
+### Added storage 10
+![Trello](docs/us10.png)
+
 
 						
 

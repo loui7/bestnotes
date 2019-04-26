@@ -1,0 +1,19 @@
+---
+- !ruby/object:User
+  id: 1
+  username: Abs
+  categories:
+  - !ruby/object:Category
+    id: 1
+    name: sports
+    notes: []
+  password: cool
+- !ruby/object:User
+  id: 2
+  username: abs
+  categories:
+  - !ruby/object:Category
+    id: 1
+    name: Sports
+    notes: []
+  password: coder
