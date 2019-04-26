@@ -1,18 +1,10 @@
 class User
-    attr_reader :id, :username, :categories, :password
+    attr_reader :id, :username
     def initialize(id, username, password = nil)
         @id = id
         @username = username
-        @categories = []
         @password = password
-    end
-
-    def add_category
-        puts "Please enter a name for your new category: "
-        new_category_id = @categories.length + 1
-        new_category_name = gets.strip
-        new_category = Category.new(new_category_id, new_category_name)
-        @categories.push(new_category)
+        @categories = []
     end
 
     def auth
@@ -21,16 +13,60 @@ class User
         loop do
             entered_password = gets.chomp
 
-            return self if entered_password == password
+            return self if entered_password == @password
 
             # returns to top of auth loop unless user enters 'm'
-            puts "That was not the correct password. Press (r) to try again or (m) to return to the main login screen."
+            print "That was not the correct password. Press (r) to try again or (m) to return to the main login screen."
             incorrect_password_prompt_response = gets.strip
             case incorrect_password_prompt_response
             when "r"
-                puts "Password: "
+                print "Password: "
             when "m"
                 return nil
+            end
+        end
+    end
+
+    def add_category
+        print "Please enter a name for your new category: "
+        new_category_id = @categories.length + 1
+        new_category_name = gets.strip
+        if new_category_name.strip.empty?
+            puts "You cannot create a category with no name."
+        else
+            new_category = Category.new(new_category_id, new_category_name)
+            @categories.push(new_category)
+        end
+    end
+
+    def menu
+        loop do
+            puts "\e[H\e[2J"
+            puts "You are logged in as #{@username}"
+            if @categories.empty?
+                print "No categories found! Please press (n) to add a new category or (m) to return to the login screen.\n> "
+            else
+                puts "(Enter '?' to see more options.)"
+                puts "Categories:"
+                @categories.each { |category| puts "#{category.id}. #{category.name}" }
+                print "> "
+            end
+
+            menu_entry = gets.strip.downcase
+
+            if menu_entry.to_i != 0
+                category_menu(menu_entry.to_i)
+            elsif menu_entry == "n"
+                add_category
+            elsif menu_entry == "?"
+                puts "\e[H\e[2J"
+                puts "- Input the number next to a category you would like to select.\n- (n) to add a new category\n- (m) to return to the login screen."
+                puts "Press any key to continue"
+                STDIN.getch
+            elsif menu_entry == "m"
+                return
+            else
+                puts "#{menu_entry} is an invalid option, please try again."
             end
         end
     end
@@ -44,30 +80,11 @@ class User
         end
 
         selected_category = @categories[category_index]
-        puts "You have selected the following Category: "
-        puts selected_category.name
 
-        until selected_category.nil?
-            if selected_category.notes.empty?
-                puts "You do not currently have any notes in this category. Press (n) to add a new note or (m) to return to the previous menu."
-            else
-                puts "These are your current notes: "
-                selected_category.notes.each { |note| puts "#{note.id}. #{note.contents}" }
-                puts "Please input the number next to the note you would like to select. You can also input (n) to add a new note or (m) to return to the previous menu."
-            end
-
-            notes_menu_entry = gets.strip
-
-            if notes_menu_entry.to_i != 0
-                selected_category.note_menu(notes_menu_entry.to_i)
-            elsif notes_menu_entry == "n"
-                selected_category.add_note
-            elsif notes_menu_entry == "m"
-                categories[category_index] = selected_category
-                selected_category = nil
-            else
-                puts "#{notes_menu_entry} is an invalid option, please try again."
-            end
+        # selected_note.menu returns true if the user indicated they wanted to delete the category.
+        if selected_category.menu
+            @categories.delete_at(category_index)
+            puts "Category succesfully deleted."
         end
     end
 end
