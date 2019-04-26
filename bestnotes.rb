@@ -5,6 +5,7 @@ require_relative "./classes/User"
 require "yaml"
 
 def main_dialogue(storage)
+    # Loads stored users arary into memory else initialises empty array and creates a file for it to be stored in
     if File.exist?(storage)
         users = YAML.safe_load(File.read(storage), [User, Category, Note, Time])
     else
@@ -14,14 +15,14 @@ def main_dialogue(storage)
 
     puts "Hello, Welcome to BestNotes"
 
-    users = users_dialogue(users)
+    # Updates the users array based on activity within the session.
+    users = bestnotes_ui(users)
 
-    File.open(storage, "r+") do |f|
-        f.write(users.to_yaml)
-    end
+    File.open(storage, "r+") { |file| file.write(users.to_yaml) }
 end
 
-def users_dialogue(users)
+# Accepts users array and returns updated users on recieving user input to quit.
+def bestnotes_ui(users)
     selected_user = nil
 
     loop do
@@ -34,7 +35,8 @@ def users_dialogue(users)
             end
 
             if users.empty? || auth_menu_entry == "r"
-                new_user = add_user(users.length + 1)
+                new_user_id = users.length + 1
+                new_user = add_user(new_user_id)
                 users.push(new_user)
                 user_index = users.length - 1
                 selected_user = users[user_index].auth
@@ -52,13 +54,13 @@ def users_dialogue(users)
             end
         end
 
+        # Updates selected user with any changes made
         selected_user = categories_dialogue(selected_user)
-
-        users[user_index] = selected_user
         selected_user = nil
     end
 end
 
+# Adds new user to array
 def add_user(new_user_id)
     puts "Please enter a username: "
     new_username = gets.strip
@@ -85,17 +87,14 @@ def add_user(new_user_id)
     return new_user
 end
 
+# Requests user input for username & checks if that user exists within the array.
 def login_dialogue(users)
     puts "Username: "
     entered_username = gets.strip
     user_index = users.find_index { |user| user.username == entered_username }
-    if user_index.nil?
-        puts "That username was not found! please try again"
-        return nil
-    else
-        puts "Password: "
-        return user_index
-    end
+    return nil if user_index.nil?
+
+    return user_index
 end
 
 def categories_dialogue(selected_user)

@@ -3,21 +3,14 @@ class User
     def initialize(id, username, password = nil)
         @id = id
         @username = username
-        @categories = []
         @password = password
-    end
-
-    def add_category
-        puts "Please enter a name for your new category: "
-        new_category_id = @categories.length + 1
-        new_category_name = gets.strip
-        new_category = Category.new(new_category_id, new_category_name)
-        @categories.push(new_category)
+        @categories = []
     end
 
     def auth
         return self if @password.nil?
 
+        puts "Password: "
         loop do
             entered_password = gets.chomp
 
@@ -33,6 +26,14 @@ class User
                 return nil
             end
         end
+    end
+
+    def add_category
+        puts "Please enter a name for your new category: "
+        new_category_id = @categories.length + 1
+        new_category_name = gets.strip
+        new_category = Category.new(new_category_id, new_category_name)
+        @categories.push(new_category)
     end
 
     def category_menu(category_id)
@@ -63,7 +64,6 @@ class User
             elsif notes_menu_entry == "n"
                 selected_category.add_note
             elsif notes_menu_entry == "m"
-                categories[category_index] = selected_category
                 selected_category = nil
             else
                 puts "#{notes_menu_entry} is an invalid option, please try again."

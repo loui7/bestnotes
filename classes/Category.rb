@@ -13,7 +13,6 @@ class Category
         new_note_contents = gets.chomp
         new_note = Note.new(new_note_id, new_note_contents)
         @notes.push(new_note)
-        return @notes.length - 1
     end
 
     def note_menu(note_id)
@@ -40,7 +39,6 @@ class Category
                 puts "Note succesfully deleted."
                 selected_note = nil
             elsif selected_note_menu_entry == "m"
-                @notes[note_index] = selected_note
                 selected_note = nil
             else
                 puts "#{selected_note_menu_entry} is an invalid option, please try again."
