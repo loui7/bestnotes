@@ -156,6 +156,8 @@ Description of overall app design (classes, files, basic flow)
 ### Added storage 10
 ![Trello](docs/us10.png)
 
+###End of README file
+
 
 						
 
