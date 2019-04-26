@@ -55,7 +55,7 @@ def bestnotes_ui(users)
         end
 
         # Updates selected user with any changes made
-        selected_user = categories_dialogue(selected_user)
+        categories_dialogue(selected_user)
         selected_user = nil
     end
 end
@@ -92,8 +92,6 @@ def login_dialogue(users)
     puts "Username: "
     entered_username = gets.strip
     user_index = users.find_index { |user| user.username == entered_username }
-    return nil if user_index.nil?
-
     return user_index
 end
 
@@ -114,11 +112,12 @@ def categories_dialogue(selected_user)
         elsif category_menu_entry == "n"
             selected_user.add_category
         elsif category_menu_entry == "m"
-            return selected_user
+            return
         else
             puts "#{category_menu_entry} is an invalid option, please try again."
         end
     end
 end
 
+# Initializes application
 main_dialogue("./storage.yml")

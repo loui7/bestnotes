@@ -48,26 +48,6 @@ class User
         puts "You have selected the following Category: "
         puts selected_category.name
 
-        until selected_category.nil?
-            if selected_category.notes.empty?
-                puts "You do not currently have any notes in this category. Press (n) to add a new note or (m) to return to the previous menu."
-            else
-                puts "These are your current notes: "
-                selected_category.notes.each { |note| puts "#{note.id}. #{note.contents}" }
-                puts "Please input the number next to the note you would like to select. You can also input (n) to add a new note or (m) to return to the previous menu."
-            end
-
-            notes_menu_entry = gets.strip
-
-            if notes_menu_entry.to_i != 0
-                selected_category.note_menu(notes_menu_entry.to_i)
-            elsif notes_menu_entry == "n"
-                selected_category.add_note
-            elsif notes_menu_entry == "m"
-                selected_category = nil
-            else
-                puts "#{notes_menu_entry} is an invalid option, please try again."
-            end
-        end
+        selected_category.menu
     end
 end

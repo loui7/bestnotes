@@ -15,6 +15,30 @@ class Category
         @notes.push(new_note)
     end
 
+    def menu
+        loop do
+            if @notes.empty?
+                puts "You do not currently have any notes in this category. Press (n) to add a new note or (m) to return to the previous menu."
+            else
+                puts "These are your current notes: "
+                @notes.each { |note| puts "#{note.id}. #{note.contents}" }
+                puts "Please input the number next to the note you would like to select. You can also input (n) to add a new note or (m) to return to the previous menu."
+            end
+
+            notes_menu_entry = gets.strip
+
+            if notes_menu_entry.to_i != 0
+                note_menu(notes_menu_entry.to_i)
+            elsif notes_menu_entry == "n"
+                add_note
+            elsif notes_menu_entry == "m"
+                return
+            else
+                puts "#{notes_menu_entry} is an invalid option, please try again."
+            end
+        end
+    end
+
     def note_menu(note_id)
         note_index = @notes.find_index { |note| note.id == note_id }
 
@@ -26,23 +50,10 @@ class Category
         selected_note = @notes[note_index]
         puts "You have selected the following note: "
         puts selected_note.contents
-        until selected_note.nil?
-            puts "Press (u) to update, (d) to delete or (m) to return to previous menu."
-            selected_note_menu_entry = gets.strip.downcase
-            if selected_note_menu_entry == "u"
-                puts "Please enter updated note: "
-                updated_note_contents = gets.chomp
-                selected_note.update_note(updated_note_contents)
-                puts "You have successfully edited your note."
-            elsif selected_note_menu_entry == "d"
-                @notes.delete_at(note_index)
-                puts "Note succesfully deleted."
-                selected_note = nil
-            elsif selected_note_menu_entry == "m"
-                selected_note = nil
-            else
-                puts "#{selected_note_menu_entry} is an invalid option, please try again."
-            end
+
+        if selected_note.menu
+            @notes.delete_at(note_index)
+            puts "Note succesfully deleted."
         end
     end
 end
