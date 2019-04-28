@@ -1,0 +1,26 @@
+---
+- !ruby/object:User
+  id: 1
+  username: louis
+  password: password
+  categories:
+  - !ruby/object:Category
+    id: 1
+    name: Books
+    notes:
+    - !ruby/object:Note
+      id: 1
+      contents: TBK
+      creation_time: 2019-04-28 13:00:09.509380000 +10:00
+    - !ruby/object:Note
+      id: 2
+      contents: IJ
+      creation_time: 2019-04-28 13:00:12.562847200 +10:00
+  - !ruby/object:Category
+    id: 2
+    name: Shopping
+    notes: []
+  - !ruby/object:Category
+    id: 3
+    name: Study
+    notes: []

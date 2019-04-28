@@ -1,24 +1,26 @@
-require_relative "./classes/Category"
-require_relative "./classes/Note"
-require_relative "./classes/User"
+require_relative "../lib/classes/Category"
+require_relative "../lib/classes/Note"
+require_relative "../lib/classes/User"
 
 require "yaml"
 require "io/console"
 require "prawn"
 
 def main_dialogue(storage)
+    storage_path = File.dirname(__FILE__) << "/../lib/#{storage}"
+
     # Loads stored users arary into memory else initialises empty array and creates a file for it to be stored in
-    if File.exist?(storage)
-        users = YAML.safe_load(File.read(storage), [User, Category, Note, Time])
+    if File.exist?(storage_path)
+        users = YAML.safe_load(File.read(storage_path), [User, Category, Note, Time])
     else
         users = []
-        File.open(storage, "w+") { |file| file.write(users.to_yaml) }
+        File.open(storage_path, "w+") { |file| file.write(users.to_yaml) }
     end
 
     # Updates the users array based on activity within the session.
     users = bestnotes_ui(users)
 
-    File.open(storage, "r+") { |file| file.write(users.to_yaml) }
+    File.open(storage_path, "r+") { |file| file.write(users.to_yaml) }
 end
 
 # Accepts users array and returns updated users on recieving user input to quit.
