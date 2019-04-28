@@ -1,6 +1,5 @@
 # bestnotes
 
-## Description of the App
 ### Purpose: 
 Elegant and effective open source note taking.
 
