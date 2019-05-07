@@ -29,7 +29,7 @@ def bestnotes_ui(users)
 
   loop do
     while selected_user.nil?
-      puts "\e[H\e[2J"
+      print "\e[H\e[2J"
       puts "Welcome to BestNotes!"
       if users.empty?
         puts "No accounts found!"
@@ -50,7 +50,7 @@ def bestnotes_ui(users)
       elsif auth_menu_entry == "l"
         user_index = login_dialogue(users)
         if user_index.nil?
-          puts "\e[H\e[2J"
+          print "\e[H\e[2J"
           puts "Sorry, that username does not exist in our database. Please try again."
           puts "Press any key to continue"
           STDIN.getch

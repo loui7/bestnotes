@@ -41,7 +41,7 @@ class User
 
   def menu
     loop do
-      puts "\e[H\e[2J"
+      print "\e[H\e[2J"
       puts "You are logged in as #{@username}"
       if @categories.empty?
         print "No categories found! Please press (n) to add a new category or (m) to return to the login screen.\n> "
@@ -59,7 +59,8 @@ class User
       elsif menu_entry == "n"
         add_category
       elsif menu_entry == "?"
-        puts "\e[H\e[2J"
+        print "\e[H\e[2J"
+        puts "----Options----"
         puts "- Input the number next to a category you would like to select.\n- (n) to add a new category\n- (m) to return to the login screen."
         puts "Press any key to continue"
         STDIN.getch

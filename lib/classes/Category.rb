@@ -8,7 +8,7 @@ class Category
   end
 
   def add_note
-    puts "\e[H\e[2J"
+    print "\e[H\e[2J"
     puts "Enter new note: "
     new_note_id = @notes.length + 1
     new_note_contents = gets.chomp
@@ -22,7 +22,7 @@ class Category
 
   def menu
     loop do
-      puts "\e[H\e[2J"
+      print "\e[H\e[2J"
 
       if @notes.empty?
         print "You do not currently have any notes in '#{@name}'. Press (n) to add a new note or (m) to return to the previous menu.\n> "
@@ -41,7 +41,8 @@ class Category
       elsif menu_entry == "n"
         add_note
       elsif menu_entry == "?"
-        puts "\e[H\e[2J"
+        print "\e[H\e[2J"
+        puts "----Options----"
         puts "- Input the number next to a note you would like to select\n- (n) to add a new note\n- (d) to delete this category with all notes\n- (p) to generate a pdf of all notes in this category.\n- (m) to return to the previous menu."
         puts "Press any key to continue"
         STDIN.getch
@@ -80,14 +81,15 @@ class Category
           pdf.define_grid(:columns => 3, :rows => table_arr.length, :gutter => 1)
           table_arr.each_with_index { |row, row_index|
             row.each_with_index { |data, column_index|
-              p row_index
-              p column_index
               pdf.grid([row_index, column_index], [row_index + 1, column_index + 1]).bounding_box do
                 pdf.text data.to_s
               end
             }
           }
         end
+        puts "Your PDF has been successfully generated!"
+        puts "Press any key to continue."
+        STDIN.getch
         return
       end
     end

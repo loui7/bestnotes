@@ -9,7 +9,7 @@ class Note
 
   def menu
     loop do
-      puts "\e[H\e[2J"
+      print "\e[H\e[2J"
       puts "Selected note: #{@contents}"
       puts "Date created: #{@creation_time.strftime("%d/%m/%y")}"
       print "Press (u) to update, (d) to delete or (m) to return to previous menu.\n> "
@@ -22,7 +22,7 @@ class Note
           STDIN.getch
         else
           @contents = updated_note
-          puts "\e[H\e[2J"
+          print "\e[H\e[2J"
           puts "You have successfully edited your note."
         end
       elsif selected_note_menu_entry == "d"
