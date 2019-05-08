@@ -74,18 +74,19 @@ class Category
         puts "You have not entered a valid filename. Please try again."
       else
         Prawn::Document.generate(file_path) do |pdf|
-          table_arr = [
-            ["Note ID", "Contents", "Creation Date"]
-          ]
-          @notes.each { |note| table_arr.push([note.id, note.contents, note.creation_time]) }
-          pdf.define_grid(:columns => 3, :rows => table_arr.length, :gutter => 1)
-          table_arr.each_with_index { |row, row_index|
-            row.each_with_index { |data, column_index|
-              pdf.grid([row_index, column_index], [row_index + 1, column_index + 1]).bounding_box do
-                pdf.text data.to_s
-              end
-            }
-          }
+          sel_date = nil
+          @notes.each do |note|
+            date_str = note.creation_time.strftime("%d/%m/%Y")
+            if date_str != sel_date
+              sel_date = date_str
+              pdf.move_down 10
+              pdf.text "Added on: " + sel_date, style: :bold, size: 14
+              pdf.move_down 5
+            end
+            pdf.text note.id.to_s, style: :bold
+            pdf.text note.contents
+            pdf.move_down 5
+          end
         end
         puts "Your PDF has been successfully generated!"
         puts "Press any key to continue."

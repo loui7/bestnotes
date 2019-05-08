@@ -62,6 +62,8 @@ def bestnotes_ui(users)
         return users
       else
         puts "#{auth_menu_entry} is an invalid option, please try again."
+        puts "Press any key to continue"
+        STDIN.getch
       end
     end
 
