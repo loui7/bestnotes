@@ -6,52 +6,51 @@
   categories:
   - !ruby/object:Category
     id: 1
-    name: Books
+    name: Reading List
     notes:
     - !ruby/object:Note
       id: 1
-      contents: TBK
+      contents: The Brothers Karamazov
       creation_time: 2019-04-28 13:00:09.509380000 +10:00
     - !ruby/object:Note
       id: 2
-      contents: IJ
+      contents: Infinite Jest
       creation_time: 2019-04-28 13:00:12.562847200 +10:00
     - !ruby/object:Note
       id: 3
       contents: To Engineer Is Human
-      creation_time: 2019-05-09 17:26:37.087291100 +10:00
+      creation_time: 2019-05-02 17:26:37.087291100 +10:00
     - !ruby/object:Note
       id: 4
-      contents: The Art of Electronics by Paul Horowitz and Winfield Hill
-      creation_time: 2019-05-09 17:26:52.808197800 +10:00
+      contents: The Art of Electronics
+      creation_time: 2019-05-02 17:26:52.808197800 +10:00
     - !ruby/object:Note
       id: 5
       contents: The Design of Everyday Things
-      creation_time: 2019-05-09 17:27:04.923856700 +10:00
+      creation_time: 2019-05-02 17:27:04.923856700 +10:00
     - !ruby/object:Note
       id: 6
       contents: 'How Not to be Wrong: The Power of Mathematical Thinking'
-      creation_time: 2019-05-09 17:27:19.036143300 +10:00
+      creation_time: 2019-05-02 17:27:19.036143300 +10:00
     - !ruby/object:Note
       id: 7
       contents: World as Will and Representation
-      creation_time: 2019-05-09 17:37:57.074318100 +10:00
+      creation_time: 2019-05-04 17:37:57.074318100 +10:00
     - !ruby/object:Note
       id: 8
       contents: The Birth of Tragedy
-      creation_time: 2019-05-09 17:38:13.332001500 +10:00
+      creation_time: 2019-05-04 17:38:13.332001500 +10:00
     - !ruby/object:Note
       id: 9
       contents: 'Hooked: How to Build Habit-Forming Products'
-      creation_time: 2019-05-09 17:38:39.929668100 +10:00
+      creation_time: 2019-05-04 17:38:39.929668100 +10:00
     - !ruby/object:Note
       id: 10
-      contents: 'The Hard Thing About Hard Things: Building a Business When There
-        Are No Easy Answers'
-      creation_time: 2019-05-09 17:38:53.011739000 +10:00
+      contents: The Hard Thing About Hard Things
+      creation_time: 2019-05-04 17:38:53.011739000 +10:00
     - !ruby/object:Note
       id: 11
-      contents: 'Traction: How Any Startup Can Achieve Explosive Customer Growth'
+      contents: Traction
       creation_time: 2019-05-09 17:39:05.114280000 +10:00
     - !ruby/object:Note
       id: 12
@@ -59,15 +58,16 @@
       creation_time: 2019-05-09 17:39:14.361251800 +10:00
     - !ruby/object:Note
       id: 13
-      contents: Good to great
+      contents: Good to Great
       creation_time: 2019-05-09 17:39:21.921105700 +10:00
     - !ruby/object:Note
       id: 14
-      contents: 'The Righteous Mind: Why Good People Are Divided by Politics and Religion'
+      contents: Sidhartha
       creation_time: 2019-05-09 17:39:47.418039300 +10:00
     - !ruby/object:Note
       id: 15
-      contents: 'Moral Politics: How Liberals and Conservatives Think'
+      contents: A Philosophical Enquiry into the Origin of Our Ideas of the Sublime
+        and Beautiful
       creation_time: 2019-05-09 17:39:54.024323400 +10:00
   - !ruby/object:Category
     id: 2
@@ -75,5 +75,5 @@
     notes: []
   - !ruby/object:Category
     id: 3
-    name: Study
+    name: Assignments
     notes: []

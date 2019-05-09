@@ -53,7 +53,7 @@ def bestnotes_ui(users)
         if user_index.nil?
           print "\e[H\e[2J"
           puts "Sorry, that username does not exist in our database. Please try again."
-          puts "Press any key to continue"
+          puts "Press any key to continue."
           STDIN.getch
         else
           print "Password: "
@@ -63,7 +63,7 @@ def bestnotes_ui(users)
         return users
       else
         puts "#{auth_menu_entry} is an invalid option, please try again."
-        puts "Press any key to continue"
+        puts "Press any key to continue."
         STDIN.getch
       end
     end
@@ -83,12 +83,12 @@ def add_user(new_user_id, users)
 
   if new_username.strip.empty?
     puts "You cannot create a user with an empty username, please try again."
-    puts "Press any key to continue"
+    puts "Press any key to continue."
     STDIN.getch
     return nil
   elsif !user_index.nil?
     puts "There is already an account with that name, please try again."
-    puts "Press any key to continue"
+    puts "Press any key to continue."
     STDIN.getch
     return nil
   end

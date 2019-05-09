@@ -43,8 +43,8 @@ class Category
       elsif menu_entry == "?"
         print "\e[H\e[2J"
         puts "----Options----"
-        puts "- Input the number next to a note you would like to select\n- (n) to add a new note\n- (d) to delete this category with all notes\n- (p) to generate a pdf of all notes in this category.\n- (m) to return to the previous menu."
-        puts "Press any key to continue"
+        puts "Input the number next to a note you would like to select\n(n) to add a new note\n(d) to delete this category with all notes\n(p) to generate a pdf of all notes in this category.\n(m) to return to the previous menu."
+        puts "Press any key to continue."
         STDIN.getch
       elsif menu_entry == "p"
         generate_pdf
