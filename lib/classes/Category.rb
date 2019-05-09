@@ -29,7 +29,7 @@ class Category
       else
         puts "(Enter '?' to see more options.)"
         puts "Selected category: #{@name}"
-        puts "Notes: "
+        puts "Notes:"
         @notes.each { |note| puts "#{note.id}. #{note.contents}" }
         print "> "
       end
