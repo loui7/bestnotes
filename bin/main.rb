@@ -5,6 +5,7 @@ require_relative "../lib/classes/User"
 require "yaml"
 require "io/console"
 require "prawn"
+require 'readline'
 
 def main_dialogue(storage)
   storage_path = File.dirname(__FILE__) << "/../lib/#{storage}"
@@ -35,7 +36,7 @@ def bestnotes_ui(users)
         puts "No accounts found!"
       else
         print "Press (l) to login, (r) to register or (q) to quit.\n> "
-        auth_menu_entry = gets.strip.downcase
+        auth_menu_entry = Readline.readline.strip.downcase
       end
 
       if users.empty? || auth_menu_entry == "r"
@@ -76,7 +77,7 @@ end
 # Adds new user to array
 def add_user(new_user_id, users)
   print "Please enter a username: "
-  new_username = gets.strip
+  new_username = Readline.readline.strip
 
   user_index = users.find_index { |user| user.username == new_username }
 
@@ -93,14 +94,14 @@ def add_user(new_user_id, users)
   end
 
   print "Do you want to set a password? (y/n) or (m) to return to the main login screen: "
-  password_wanted = gets.strip.downcase
+  password_wanted = Readline.readline.strip.downcase
 
   new_user = nil
 
   while new_user.nil?
     if password_wanted == "y"
       print "Enter password: "
-      new_password = gets.chomp
+      new_password = Readline.readline
       new_user = User.new(new_user_id, new_username, new_password)
       print "Please confirm your password: "
     elsif password_wanted == "n"
@@ -117,7 +118,7 @@ end
 # Requests user input for username & checks if that user exists within the array.
 def login_dialogue(users)
   print "Username: "
-  entered_username = gets.strip
+  entered_username = Readline.readline.strip
   user_index = users.find_index { |user| user.username == entered_username }
   return user_index
 end

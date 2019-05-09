@@ -11,7 +11,7 @@ class Category
     print "\e[H\e[2J"
     puts "Enter new note: "
     new_note_id = @notes.length + 1
-    new_note_contents = gets.chomp
+    new_note_contents = Readline.readline
     if new_note_contents.strip.empty?
       puts "You cannot create empty notes."
     else
@@ -34,7 +34,7 @@ class Category
         print "> "
       end
 
-      menu_entry = gets.strip
+      menu_entry = Readline.readline.strip
 
       if menu_entry.to_i != 0
         note_menu(menu_entry.to_i)
@@ -54,13 +54,15 @@ class Category
         return false
       else
         puts "#{menu_entry} is an invalid option, please try again."
+        puts "Press any key to continue."
+        STDIN.getch
       end
     end
   end
 
   def generate_pdf
     loop do
-      print "Filename: "; filename = gets.strip
+      print "Filename: "; filename = Readline.readline.strip
       filename << ".pdf" unless filename.end_with?(".pdf")
 
       pdf_dir = File.dirname(__FILE__) << "/../../pdfs"
@@ -103,7 +105,7 @@ class Category
     note_index = @notes.find_index { |note| note.id == note_id }
 
     if note_index.nil?
-      puts "That was not a valid ID! Please try again."
+      puts "That was not a valid option! Please try again."
       return
     end
 

@@ -11,13 +11,13 @@ class User
     return self if @password.nil?
 
     loop do
-      entered_password = gets.chomp
+      entered_password = Readline.readline
 
       return self if entered_password == @password
 
       # returns to top of auth loop unless user enters 'm'
       print "That was not the correct password. Press (r) to try again or (m) to return to the main login screen."
-      incorrect_password_prompt_response = gets.strip
+      incorrect_password_prompt_response = Readline.readline.strip
       case incorrect_password_prompt_response
       when "r"
         print "Password: "
@@ -30,7 +30,7 @@ class User
   def add_category
     print "Please enter a name for your new category: "
     new_category_id = @categories.length + 1
-    new_category_name = gets.strip
+    new_category_name = Readline.readline.strip
     if new_category_name.strip.empty?
       puts "You cannot create a category with no name."
     else
@@ -52,7 +52,7 @@ class User
         print "> "
       end
 
-      menu_entry = gets.strip.downcase
+      menu_entry = Readline.readline.strip.downcase
 
       if menu_entry.to_i != 0
         category_menu(menu_entry.to_i)
