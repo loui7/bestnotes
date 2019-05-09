@@ -60,13 +60,13 @@ class Category
 
   def generate_pdf
     loop do
-      Dir.mkdir("./pdfs") unless Dir.exist?("./pdfs")
-
       print "Filename: "; filename = gets.strip
-
       filename << ".pdf" unless filename.end_with?(".pdf")
 
-      file_path = "./pdfs/#{filename}"
+      pdf_dir = File.dirname(__FILE__) << "/../../pdfs"
+      Dir.mkdir(pdf_dir) unless Dir.exist?(pdf_dir)
+
+      file_path = pdf_dir + "/#{filename}"
 
       if File.exist?(file_path)
         puts "Sorry, you have already created a file with that name. Please try again."
@@ -74,6 +74,8 @@ class Category
         puts "You have not entered a valid filename. Please try again."
       else
         Prawn::Document.generate(file_path) do |pdf|
+          pdf.text "Category: #{@name}", style: :bold, size: 16, align: :center
+
           sel_date = nil
           @notes.each do |note|
             date_str = note.creation_time.strftime("%d/%m/%Y")
@@ -87,6 +89,7 @@ class Category
             pdf.text note.contents
             pdf.move_down 5
           end
+          pdf.text "Exported from BestNotes #{Time.now.strftime("%c")}.", valign: :bottom
         end
         puts "Your PDF has been successfully generated!"
         puts "Press any key to continue."
