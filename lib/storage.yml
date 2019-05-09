@@ -72,8 +72,33 @@
   - !ruby/object:Category
     id: 2
     name: Shopping
-    notes: []
+    notes:
+    - !ruby/object:Note
+      id: 1
+      contents: Cheese
+      creation_time: 2019-05-10 08:21:40.244184200 +10:00
+    - !ruby/object:Note
+      id: 2
+      contents: Bread
+      creation_time: 2019-05-10 08:21:42.519406900 +10:00
+    - !ruby/object:Note
+      id: 3
+      contents: LARGE Choccy Milk
+      creation_time: 2019-05-10 08:21:47.176606700 +10:00
+    - !ruby/object:Note
+      id: 4
+      contents: Smokey BBQ Sauce
+      creation_time: 2019-05-10 08:21:52.157961200 +10:00
   - !ruby/object:Category
-    id: 3
-    name: Assignments
+    id: 4
+    name: Electronic Equipment Needed
+    notes: []
+- !ruby/object:User
+  id: 2
+  username: coolguy123
+  password: 
+  categories:
+  - !ruby/object:Category
+    id: 1
+    name: CoolCat
     notes: []

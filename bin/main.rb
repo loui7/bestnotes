@@ -72,8 +72,8 @@ def bestnotes_ui(users)
       if users.empty?
         puts "No accounts found!"
       else
-        print "Press (l) to login, (r) to register or (q) to quit.\n> "
-        auth_menu_entry = Readline.readline.strip.downcase
+        print "Press (l) to login, (r) to register or (q) to quit.\n"
+        auth_menu_entry = Readline.readline("> ").strip.downcase
       end
 
       if users.empty? || auth_menu_entry == "r"

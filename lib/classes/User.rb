@@ -44,15 +44,14 @@ class User
       print "\e[H\e[2J"
       puts "You are logged in as #{@username}"
       if @categories.empty?
-        print "No categories found! Please press (n) to add a new category or (m) to return to the login screen.\n> "
+        print "No categories found! Please press (n) to add a new category or (m) to return to the login screen.\n"
       else
         puts "(Enter '?' to see more options.)"
         puts "Categories:"
         @categories.each { |category| puts "#{category.id}. #{category.name}" }
-        print "> "
       end
 
-      menu_entry = Readline.readline.strip.downcase
+      menu_entry = Readline.readline("> ").strip.downcase
 
       if menu_entry.to_i != 0
         category_menu(menu_entry.to_i)
@@ -68,6 +67,8 @@ class User
         return
       else
         puts "#{menu_entry} is an invalid option, please try again."
+        puts "Press any key to continue."
+        STDIN.getch
       end
     end
   end
@@ -77,6 +78,8 @@ class User
 
     if category_index.nil?
       puts "That was not a valid ID! Please try again."
+      puts "Press any key to continue."
+      STDIN.getch
       return
     end
 

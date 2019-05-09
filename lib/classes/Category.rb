@@ -9,7 +9,7 @@ class Category
 
   def add_note
     print "\e[H\e[2J"
-    puts "Enter new note: "
+    puts "Enter new note:"
     new_note_id = @notes.length + 1
     new_note_contents = Readline.readline
     if new_note_contents.strip.empty?
@@ -25,16 +25,15 @@ class Category
       print "\e[H\e[2J"
 
       if @notes.empty?
-        print "You do not currently have any notes in '#{@name}'. Press (n) to add a new note or (m) to return to the previous menu.\n> "
+        print "You do not currently have any notes in '#{@name}'. Press (n) to add a new note or (m) to return to the previous menu.\n"
       else
         puts "(Enter '?' to see more options.)"
         puts "Selected category: #{@name}"
         puts "Notes:"
         @notes.each { |note| puts "#{note.id}. #{note.contents}" }
-        print "> "
       end
 
-      menu_entry = Readline.readline.strip
+      menu_entry = Readline.readline("> ").strip
 
       if menu_entry.to_i != 0
         note_menu(menu_entry.to_i)
@@ -72,8 +71,12 @@ class Category
 
       if File.exist?(file_path)
         puts "Sorry, you have already created a file with that name. Please try again."
+        puts "Press any key to continue."
+        STDIN.getch
       elsif filename.strip.empty?
         puts "You have not entered a valid filename. Please try again."
+        puts "Press any key to continue."
+        STDIN.getch
       else
         Prawn::Document.generate(file_path) do |pdf|
           pdf.text "Category: #{@name}", style: :bold, size: 16, align: :center
@@ -106,6 +109,8 @@ class Category
 
     if note_index.nil?
       puts "That was not a valid option! Please try again."
+      puts "Press any key to continue."
+      STDIN.getch
       return
     end
 
