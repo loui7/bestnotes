@@ -28,7 +28,7 @@ def print(str, is_puts = false)
       lines[index] = lines[index] + " " + word
     end
   }
-  p line_arr
+  # p line_arr
   new_str = ""
   all_but_last = line_arr.length == 1 ? nil : line_arr.slice(0..line_arr.length - 2)
   all_but_last&.each { |line| new_str.concat(line, "\n") }
