@@ -9,7 +9,7 @@ require "readline"
 require "tty-screen"
 
 # Ensures text displays correctly on terminals of any size
-def print(str)
+def print(str, is_puts = false)
   screen_width = TTY::Screen.size[1]
   words = str.split(/ /)
   trail_space = str[/ +$/]
@@ -28,20 +28,19 @@ def print(str)
       lines[index] = lines[index] + " " + word
     end
   }
-  # p line_arr
+  p line_arr
   new_str = ""
   all_but_last = line_arr.length == 1 ? nil : line_arr.slice(0..line_arr.length - 2)
   all_but_last&.each { |line| new_str.concat(line, "\n") }
   new_str.concat(line_arr[line_arr.length - 1])
 
-
+  new_str.concat("\n") if is_puts
 
   super(new_str)
 end
 
 def puts(str)
-  str.concat("\n")
-  print(str)
+  print(str, true)
 end
 
 def main_dialogue(storage)
