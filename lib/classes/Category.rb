@@ -119,7 +119,9 @@ class Category
     # selected_note.menu returns true if the user indicated they wanted to delete the note.
     if selected_note.menu
       @notes.delete_at(note_index)
-      puts "Note succesfully deleted."
+      puts "Note successfully deleted."
+      puts "Press any key to continue."
+      STDIN.getch
     end
   end
 end

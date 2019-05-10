@@ -15,9 +15,11 @@ class User
 
       return self if entered_password == @password
 
+      print "\e[H\e[2J"
+
       # returns to top of auth loop unless user enters 'm'
-      print "That was not the correct password. Press (r) to try again or (m) to return to the main login screen."
-      incorrect_password_prompt_response = Readline.readline.strip
+      puts "That was not the correct password. Press (r) to try again or (m) to return to the main login screen."
+      incorrect_password_prompt_response = Readline.readline("> ").strip
       case incorrect_password_prompt_response
       when "r"
         print "Password: "
@@ -88,7 +90,9 @@ class User
     # selected_note.menu returns true if the user indicated they wanted to delete the category.
     if selected_category.menu
       @categories.delete_at(category_index)
-      puts "Category succesfully deleted."
+      puts "Category successfully deleted."
+      puts "Press any key to continue."
+      STDIN.getch
     end
   end
 end

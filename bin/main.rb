@@ -58,7 +58,8 @@ def main_dialogue(storage)
   # Updates the users array based on activity within the session.
   users = bestnotes_ui(users)
 
-  File.open(storage_path, "r+") { |file| file.write(users.to_yaml) }
+
+  File.open(storage_path, "w+") { |file| file.write(users.to_yaml) }
 end
 
 # Accepts users array and returns updated users on recieving user input to quit.
