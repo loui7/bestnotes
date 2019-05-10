@@ -69,38 +69,6 @@
       contents: A Philosophical Enquiry into the Origin of Our Ideas of the Sublime
         and Beautiful
       creation_time: 2019-05-09 17:39:54.024323400 +10:00
-  - !ruby/object:Category
-    id: 2
-    name: Shopping List
-    notes:
-    - !ruby/object:Note
-      id: 1
-      contents: Bread
-      creation_time: 2019-05-10 15:23:51.506447300 +10:00
-    - !ruby/object:Note
-      id: 2
-      contents: Cheese
-      creation_time: 2019-05-10 15:23:53.390402500 +10:00
-    - !ruby/object:Note
-      id: 3
-      contents: 'Smokey BBQ Sause '
-      creation_time: 2019-05-10 15:23:59.365493000 +10:00
-    - !ruby/object:Note
-      id: 4
-      contents: Large Choccy Milk
-      creation_time: 2019-05-10 15:24:20.037878400 +10:00
-    - !ruby/object:Note
-      id: 5
-      contents: fuckin roite
-      creation_time: 2019-05-10 15:32:46.929759200 +10:00
-    - !ruby/object:Note
-      id: 6
-      contents: 'nah '
-      creation_time: 2019-05-10 15:32:49.276054000 +10:00
-    - !ruby/object:Note
-      id: 7
-      contents: 'what the fuck is happening '
-      creation_time: 2019-05-10 15:37:33.447936100 +10:00
 - !ruby/object:User
   id: 2
   username: borris
