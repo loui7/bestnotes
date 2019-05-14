@@ -1,4 +1,4 @@
-# bestnotes
+# BestNotes
 
 ### Purpose: 
 Elegant and effective open source note taking.
@@ -24,4 +24,4 @@ ruby ./bin/main.rb
 - Better accessability features i.e. text to speech,
 
 ## History:
-Originally created as as assignment for the CoderAcademy GenTech coding bootcamp through collaboration with [Abdullahi Mohamed](https://github.com/absmohamed)
+Originally created as as assignment for the CoderAcademy GenTech coding bootcamp through collaboration with [Louis Lloyd-Besson](https://github.com/loui7)
