@@ -1,6 +1,6 @@
-require_relative "../lib/classes/Category"
-require_relative "../lib/classes/Note"
-require_relative "../lib/classes/User"
+require_relative "./bestnotes/Category"
+require_relative "./bestnotes/Note"
+require_relative "./bestnotes/User"
 
 require "yaml"
 require "io/console"
@@ -44,7 +44,7 @@ def puts(str)
 end
 
 def main_dialogue(storage)
-  storage_path = File.dirname(__FILE__) << "/../lib/#{storage}"
+  storage_path = File.dirname(__FILE__) << "/../#{storage}"
 
   # Loads stored users arary into memory else initialises empty array and creates a file for it to be stored in
   if File.exist?(storage_path)
@@ -161,4 +161,4 @@ def login_dialogue(users)
 end
 
 # Initializes application
-main_dialogue("./storage.yml")
+main_dialogue("storage.yml")

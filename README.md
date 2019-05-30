@@ -12,7 +12,7 @@ Elegant and effective open source note taking.
 - View options on any menu my entering '?'
 
 ### Instructions for Use:
-ruby ./bin/main.rb
+ruby ./lib/bestnotes.rb
 
 ## Future Enhancements:
 - For the user to be able to change the passwords after and/or before logging in.
