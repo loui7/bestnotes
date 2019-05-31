@@ -34,11 +34,11 @@ class BestNotesModel
   end
 
   def user_exists?(username)
-    @users.any? { |user| user.username == username}
+    @users.any? { |user| user.username == username }
   end
 
   def has_password?(username)
-    @users.find { |user| user.username == username}.has_password?
+    @users.find { |user| user.username == username }.has_password?
   end
 
   def new_user(username, password)
@@ -47,7 +47,7 @@ class BestNotesModel
   end
 
   def authorize(username, password)
-    @authorized_user = @users.find { |user| user.username == username}.authorize(password)
+    @authorized_user = @users.find { |user| user.username == username }.authorize(password)
     return @authorized_user.nil? ? false : true
   end
 
@@ -130,5 +130,4 @@ class BestNotesModel
     @selected_category.delete_note(@selected_note)
     @selected_note = nil
   end
-
 end

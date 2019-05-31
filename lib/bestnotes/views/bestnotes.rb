@@ -5,7 +5,6 @@ require "io/console"
 require "readline"
 
 class BestNotesView
-
   def welcome_message
     clear_screen
     puts "Welcome to BestNotes!"
@@ -77,7 +76,6 @@ class BestNotesView
   def add_category
     return Readline.readline("Please enter a name for your new category: ").strip
   end
-
 
   def list_categories(categories)
     puts "Categories:"
@@ -170,5 +168,4 @@ class BestNotesView
     puts "WARNING: Once deleted, it will be impossible to recover."
     return Readline.readline("> ").strip.downcase
   end
-
 end

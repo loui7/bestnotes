@@ -29,7 +29,7 @@ class UserModel
   end
 
   def get_categories
-    return @categories.map { |category| [category.id, category.name]}
+    return @categories.map { |category| [category.id, category.name] }
   end
 
   def select_category(id)
@@ -39,5 +39,4 @@ class UserModel
   def delete_category(category)
     @categories.delete(category)
   end
-
 end

@@ -29,18 +29,16 @@ class BestNotesController
         end
       elsif @bestnotes_model.logged_in?
         if @bestnotes_model.note_selected?
-          note_selected_menu 
+          note_selected_menu
         elsif @bestnotes_model.category_selected?
           notes_menu
         else
           categories_menu
         end
       end
-
     end
 
     @bestnotes_model.save_users
-    
   end
 
   def login
@@ -153,7 +151,7 @@ class BestNotesController
         else
           @bestnotes_view.invalid_input_error(prompt_response)
         end
-        
+
       else
         prompt_response = @bestnotes_view.list_notes(@bestnotes_model.selected_category_name, @bestnotes_model.get_notes)
 
@@ -195,7 +193,7 @@ class BestNotesController
       elsif prompt_response == "d"
         prompt_response = @bestnotes_view.confirm_deletion
         if prompt_response == "y"
-          @bestnotes_model.delete_note 
+          @bestnotes_model.delete_note
           return
         end
       elsif prompt_response == "m"
@@ -227,5 +225,4 @@ class BestNotesController
       end
     end
   end
-
 end

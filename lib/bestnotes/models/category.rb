@@ -16,8 +16,7 @@ class CategoryModel
   end
 
   def get_notes
-    # @notes.map { |note| [note.id, note.contents, note.creation_time]}
-    @notes.map { |note| {id: note.id, contents: note.contents, creation_time: note.creation_time}}
+    @notes.map { |note| { id: note.id, contents: note.contents, creation_time: note.creation_time } }
   end
 
   def select_note(id)
@@ -27,5 +26,4 @@ class CategoryModel
   def delete_note(note)
     @notes.delete(note)
   end
-
 end

@@ -1,7 +1,6 @@
 require "prawn"
 
 def export_notes(file_path, category_name, notes)
-
   Prawn::Document.generate(file_path) do |pdf|
     pdf.text "Category: #{category_name}", style: :bold, size: 16, align: :center
 
@@ -20,5 +19,4 @@ def export_notes(file_path, category_name, notes)
     end
     pdf.text "Exported from BestNotes #{Time.now.strftime("%c")}.", valign: :bottom
   end
-
 end

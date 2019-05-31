@@ -9,5 +9,4 @@ class NoteModel
   def update_note(new_contents)
     @contents = new_contents
   end
-
 end
