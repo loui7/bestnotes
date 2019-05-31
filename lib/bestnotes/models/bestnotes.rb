@@ -34,11 +34,11 @@ class BestNotesModel
   end
 
   def user_exists?(username)
-    @users.any? { |user| user.username == username }
+    return @users.any? { |user| user.username == username }
   end
 
   def has_password?(username)
-    @users.find { |user| user.username == username }.has_password?
+    return @users.find { |user| user.username == username }.has_password?
   end
 
   def new_user(username, password)
@@ -119,7 +119,7 @@ class BestNotesModel
   end
 
   def selected_note_details
-    return [@selected_note.contents, @selected_note.creation_time]
+    return @selected_note.get_details
   end
 
   def update_note(new_contents)

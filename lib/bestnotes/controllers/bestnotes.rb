@@ -96,7 +96,6 @@ class BestNotesController
 
   def categories_menu
     loop do
-      p @bestnotes_model.authorized_user_username
       @bestnotes_view.logged_in_welcome(@bestnotes_model.authorized_user_username)
       if @bestnotes_model.no_categories_exist?
         prompt_response = @bestnotes_view.no_categories_found
@@ -185,10 +184,11 @@ class BestNotesController
 
   def note_selected_menu
     loop do
-      prompt_response = @bestnotes_view.note_selected_menu(*@bestnotes_model.selected_note_details)
+      note_details = @bestnotes_model.selected_note_details
+      prompt_response = @bestnotes_view.note_selected_menu(note_details[:contents], note_details[:creation_time])
 
       if prompt_response == "u"
-        new_contents = @bestnotes_view.update_note(@bestnotes_model.selected_note_details[0])
+        new_contents = @bestnotes_view.update_note(note_details[:contents])
         @bestnotes_model.update_note(new_contents)
       elsif prompt_response == "d"
         prompt_response = @bestnotes_view.confirm_deletion

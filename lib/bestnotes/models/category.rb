@@ -16,7 +16,7 @@ class CategoryModel
   end
 
   def get_notes
-    @notes.map { |note| { id: note.id, contents: note.contents, creation_time: note.creation_time } }
+    return @notes.map { |note| note.get_details }
   end
 
   def select_note(id)

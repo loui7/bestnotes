@@ -31,7 +31,7 @@ class BestNotesView
   end
 
   def password_optional
-    puts "Do you want to set a password?\n(y/n) or (m) to return to the main login screen."
+    puts "Do you want to set a password? (y/n) or (m) to return to the main login screen."
     return Readline.readline("> ").strip.downcase
   end
 
