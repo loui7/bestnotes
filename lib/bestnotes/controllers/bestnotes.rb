@@ -106,6 +106,8 @@ class BestNotesController
         elsif prompt_response == "m"
           @bestnotes_model.logout
           return
+        elsif prompt_response == "?"
+          @bestnotes_view.categories_options
         else
           @bestnotes_view.invalid_input_error(prompt_response)
         end
@@ -119,8 +121,6 @@ class BestNotesController
         elsif prompt_response == "n"
           add_category
           return
-        elsif prompt_response == "?"
-          @bestnotes_view.category_menu_options
         elsif prompt_response == "m"
           @bestnotes_model.logout
           return

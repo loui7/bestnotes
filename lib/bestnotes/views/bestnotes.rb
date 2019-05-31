@@ -14,13 +14,6 @@ class BestNotesView
     puts "No accounts found!"
   end
 
-  def invalid_input_error(input)
-    puts "Sorry, '#{input}' is not a valid option! Please try again."
-    puts "(Enter '?' to see options.)"
-    puts "Press any key to continue."
-    STDIN.getch
-  end
-
   def desired_username
     return Readline.readline("Please enter a username: ").strip
   end
@@ -83,9 +76,20 @@ class BestNotesView
     return Readline.readline("> ").strip.downcase
   end
 
+  def options_hint
+    puts "(Enter '?' to see options.)"
+  end
+
   def invalid_id
     puts "That was not a valid ID! Please try again."
-    puts "(Enter '?' to see options.)"
+    options_hint
+    puts "Press any key to continue."
+    STDIN.getch
+  end
+
+  def invalid_input_error(input)
+    puts "Sorry, '#{input}' is not a valid option! Please try again."
+    options_hint
     puts "Press any key to continue."
     STDIN.getch
   end
