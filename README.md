@@ -1,6 +1,5 @@
 # BestNotes
 
-### Purpose: 
 Elegant and effective open source note taking.
 
 ### Instructions for Use:
